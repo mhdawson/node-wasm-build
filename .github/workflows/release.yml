@@ -39,4 +39,4 @@ jobs:
           tags: ghcr.io/${{ github.repository_owner }}/nodejs-wasm-build:latest
       - name: Inspect
         run: |
-          docker image inspect ${{ github.repository_owner }}/nodejs-wasm-build
+          docker image inspect ghcr.io/${{ github.repository_owner }}/nodejs-wasm-build:latest
