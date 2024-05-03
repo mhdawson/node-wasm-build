@@ -33,7 +33,7 @@ jobs:
 
       - name: capture the commit hash
         run: |
-          apt-get install -y git
+          sudo apt-get install -y git
           git log -1 --format="%H" >CommitHash
           git config --list >RepoInfo
 
