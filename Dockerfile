@@ -9,11 +9,12 @@ COPY Dockerfile metadata/Dockerfile
 COPY CommitHash metadata/CommitHash
 COPY RepoInfo metadata/RepoInfo
 
-RUN apk add -U clang lld wasi-sdk
-RUN mkdir /home/node/undici
+RUN apk add -U clang lld wasi-sdk |tee /metadata/PackagesInstalled
 
-WORKDIR /home/node/undici
+RUN mkdir /home/node/build
+WORKDIR /home/node/build
 
+RUN echo $BINARYEN_VERSION > /metadata/BinaryenVersion
 RUN wget https://github.com/WebAssembly/binaryen/releases/download/version_$BINARYEN_VERSION/binaryen-version_$BINARYEN_VERSION-x86_64-linux.tar.gz && \
     tar -zxvf binaryen-version_$BINARYEN_VERSION-x86_64-linux.tar.gz binaryen-version_$BINARYEN_VERSION/bin/wasm-opt && \
     mv binaryen-version_$BINARYEN_VERSION/bin/wasm-opt ./ && \
