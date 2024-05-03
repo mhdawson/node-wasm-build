@@ -5,10 +5,10 @@ ARG GID=1000
 ARG BINARYEN_VERSION=116
 
 RUN mkdir -p metadata
-RUN mkdir -p metadata/otherpackages
 COPY Dockerfile metadata/Dockerfile
 COPY CommitHash metadata/CommitHash
 COPY RepoInfo metadata/RepoInfo
+RUN mkdir -p metadata/otherpackages
 
 RUN apk add -U clang lld wasi-sdk |tee /metadata/OSPackagesInstalled
 

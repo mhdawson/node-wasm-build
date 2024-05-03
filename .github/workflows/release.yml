@@ -31,9 +31,12 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: capture the commit hash
+      - name: make sure we have git
         run: |
           sudo apt-get install -y git
+
+      - name: capture the commit hash
+        run: |
           git log -1 --format="%H" >CommitHash
           git config --list >RepoInfo
 
