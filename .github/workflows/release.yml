@@ -48,4 +48,3 @@ jobs:
         run: |
           docker pull ghcr.io/${{ github.repository_owner }}/nodejs-wasm-build:latest
           docker image inspect ghcr.io/${{ github.repository_owner }}/nodejs-wasm-build:latest
-          docker run -t inspect ghcr.io/${{ github.repository_owner }}/nodejs-wasm-build:latest "apk info -v"
