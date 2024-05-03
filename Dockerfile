@@ -4,6 +4,11 @@ ARG UID=1000
 ARG GID=1000
 ARG BINARYEN_VERSION=116
 
+RUN mkdir -p metadata
+COPY Dockerfile metadata/Dockerfile
+COPY CommitHash metadata/CommitHash
+COPY RepoInfo metadata/RepoInfo
+
 RUN apk add -U clang lld wasi-sdk
 RUN mkdir /home/node/undici
 
